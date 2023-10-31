@@ -14,7 +14,7 @@ git clone https://github.com/Vabolos/Discord.js-template.git
 npm install
 ```
 
-3. Create a config.js file and add the following code to it:
+3. Create a config.json file and add the following code to it:
 ```js
 {
 	"token": "TOKEN",
