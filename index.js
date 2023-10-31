@@ -1,4 +1,4 @@
-const fs = require('fs')
+const fs = require('fs');
 const path = require('node:path');
 const { Client, Partials, Collection, Events, IntentsBitField } = require('discord.js');
 const { token } = require('./config.json');
@@ -17,13 +17,13 @@ const intents = new IntentsBitField([
 	IntentsBitField.Flags.Guilds,
 	IntentsBitField.Flags.GuildMessageTyping,
 	IntentsBitField.Flags.MessageContent,
-	IntentsBitField.Flags.GuildModeration
+	IntentsBitField.Flags.GuildModeration,
 ]);
 
 // Create the discord bot client
 const client = new Client({
 	intents: intents,
-	partials: [Partials.Message, Partials.Channel, Partials.Reaction]
+	partials: [Partials.Message, Partials.Channel, Partials.Reaction],
 });
 
 client.commands = new Collection();
@@ -37,7 +37,8 @@ for (const file of commandFiles) {
 	// Set a new item in the Collection with the key as the command name and the value as the exported module
 	if ('data' in command && 'execute' in command) {
 		client.commands.set(command.data.name, command);
-	} else {
+	}
+	else {
 		console.log(`[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`);
 	}
 }
@@ -54,11 +55,13 @@ client.on(Events.InteractionCreate, async interaction => {
 
 	try {
 		await command.execute(interaction);
-	} catch (error) {
+	}
+	catch (error) {
 		console.error(error);
 		if (interaction.replied || interaction.deferred) {
 			await interaction.followUp({ content: 'There was an error while executing this command!', ephemeral: true });
-		} else {
+		}
+		else {
 			await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
 		}
 	}
@@ -72,7 +75,8 @@ for (const file of eventFiles) {
 	const event = require(filePath);
 	if (event.once) {
 		client.once(event.name, (...args) => event.execute(...args));
-	} else {
+	}
+	else {
 		client.on(event.name, (...args) => event.execute(...args));
 	}
 }
