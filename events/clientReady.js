@@ -6,5 +6,5 @@ module.exports = {
 	async execute(client) {
 		console.log(`Ready!\nLogged in as ${client.user.tag}`);
 		client.user.setPresence({ activities: [{ name: 'Javascript' }] });
-	}
-}
+	},
+};
