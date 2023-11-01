@@ -19,6 +19,9 @@ module.exports = {
 			if (err) {
 				console.error('Error:', err);
 			}
+			else {
+				console.log('Message sent and data inserted into the database.');
+			}
 		});
 	},
 };
