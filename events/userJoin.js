@@ -31,6 +31,9 @@ module.exports = {
 					if (insertErr) {
 						console.error('Error inserting into database:', insertErr);
 					}
+					else {
+						console.log('User joined and data inserted into the database.');
+					}
 				});
 			}
 		});
