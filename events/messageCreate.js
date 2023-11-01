@@ -1,19 +1,25 @@
-const Discord = require('discord.js');
-const client = new Discord.Client();
-const dbConnection = require('./db');
+const { Events } = require('discord.js');
+const dbConnection = require('../dbConnection.js');
 
-client.on('message', (message) => {
-	if (message.content === '!getData') {
-		dbConnection.query(
-			'SELECT * FROM `table` WHERE `name` = ? AND `age` > ?',
-			['Page', 45],
-			(err, results) => {
-				if (err) {
-					console.error('Error executing query:', err);
-					return;
-				}
-				console.log(results);
-			},
-		);
-	}
-});
+module.exports = {
+	name: Events.MessageCreate,
+	async execute(message) {
+		if (message.author.bot) return;
+
+		// You need to extract the required information from the message object
+		const messageId = message.id;
+		const messageContent = message.content;
+		const userName = message.author.username;
+		const userId = message.author.id;
+
+		const sql = 'INSERT INTO `messageinfo`(`messageId`, `messageContent`, `userName`, `userId`) VALUES (?, ?, ?, ?)';
+		const values = [messageId, messageContent, userName, userId];
+
+		dbConnection.query(sql, values, (err) => {
+			if (err) {
+				console.error('Error:', err);
+			}
+		});
+	},
+};
+
