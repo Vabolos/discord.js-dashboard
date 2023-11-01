@@ -11,7 +11,7 @@ timeout /t 10
 @REM Change the directory to where your Discord bot script is located
 cd "D:\Github\Bots\Discord.js\discord.js-dashboard"
 
-REM Start your Discord bot using Node.js
+REM Start your Discord bot using nodemon (or node . if you don't use nodemon/have it installed)
 nodemon
 
 @REM Keep the batch file open so you can see any console output
