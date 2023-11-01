@@ -21,7 +21,7 @@ module.exports = {
                     console.error('Error:', err);
                 }
                 else {
-                    console.log('User kicked and data inserted into the database.');
+                    console.log('\x1b[31m%s\x1b[0m', 'User kicked and data inserted into the database.');
                 }
             });
         }

@@ -21,7 +21,7 @@ module.exports = {
                     console.error('Error:', err);
                 }
                 else {
-                    console.log('User banned and data inserted into the database.');
+                    console.log('\x1b[31m%s\x1b[0m', 'User banned and data inserted into the database.');
                 }
             });
         }

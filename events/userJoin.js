@@ -32,7 +32,7 @@ module.exports = {
 						console.error('Error inserting into database:', insertErr);
 					}
 					else {
-						console.log('User joined and data inserted into the database.');
+						console.log('\x1b[31m%s\x1b[0m', 'User joined and data inserted into the database.');
 					}
 				});
 			}
