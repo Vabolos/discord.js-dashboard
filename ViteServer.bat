@@ -1,3 +1,0 @@
-echo hello! :D
-
-pause
