@@ -11,14 +11,17 @@ This is a Discord.js bot that uses a database to store data and has a React dash
 - Clone this repository.
 
 ### Start the bot:
+
 `node .` or `nodemon`
 
 Nodemon is not installed by default and can be installed by running the following command in the terminal:
+
 `npm i -g nodemon`
 
 The bot will automatically restart when you make changes to the code and hit save (CTRL + S).
 
 ### Start the dashboard:
+
 `npm start`
 
 ## Usage
