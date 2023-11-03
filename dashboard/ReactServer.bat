@@ -7,3 +7,6 @@ cd D:\Github\Bots\Discord.js\discord.js-dashboard\dashboard
 
 @REM Start your react server
 npm start
+
+@REM Pause the script so you can see any errors
+pause

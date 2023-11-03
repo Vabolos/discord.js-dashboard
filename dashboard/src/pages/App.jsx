@@ -1,4 +1,4 @@
-import './App.css';
+import '../App.css';
 
 function App() {
   return (
@@ -14,9 +14,7 @@ function App() {
           </div>
           <ul className="sidebar-navigation">
             <li>
-              <a href>
                 <i className="fa fa-home" aria-hidden="true"></i> Dashboard
-              </a>
             </li>
             <li>
               <a href>
@@ -37,7 +35,19 @@ function App() {
           <h3>Audit information</h3>
           <div className="timeouts-auditContainer">
             <h4>Time-outs</h4>
-            <p>30 timed out</p>
+            <p>30 users timed out</p>
+          </div>
+          <div className="bans-auditContainer">
+            <h4>Bans</h4>
+            <p>20 users banned</p>
+          </div>
+          <div className="sentMsg-auditContainer">
+            <h4>Total messages</h4>
+            <p>10 messages sent</p>
+          </div>
+          <div className="kicks-auditContainer">
+            <h4>Kicks</h4>
+            <p>40 users kicked</p>
           </div>
         </div>
         <div className="uptime-container">
@@ -50,6 +60,7 @@ function App() {
           <h3>Upcoming</h3>
         </div>
       </header>
+      <script src="script.js"></script>
     </div>
   );
 }
