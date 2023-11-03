@@ -2,6 +2,11 @@ const fs = require('fs');
 const path = require('node:path');
 const { Client, Partials, Collection, Events, IntentsBitField } = require('discord.js');
 const { token } = require('./config.json');
+// const fastify = require('fastify')({ logger: false });
+
+// fastify.get('/bot-status', async (request, reply) => {
+// 	reply.send({ status: 'I am online!' });
+// });
 
 // Create intents
 const intents = new IntentsBitField([
