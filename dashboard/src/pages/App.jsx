@@ -22,6 +22,18 @@ function DataFetch() {
     return () => clearInterval(interval);
   }, []);
 
+  const messages = data?.messages;
+  const bans = data?.bans;
+  const timeouts = data?.timeouts;
+  const kicks = data?.kicks;
+
+  const item = {
+    messages,
+    bans,
+    timeouts,
+    kicks
+  };
+
   return (
   <div className="App">
       <header className="App-header">
@@ -56,19 +68,19 @@ function DataFetch() {
           <h3>Audit information</h3>
           <div className="timeouts-auditContainer">
             <h4>Time-outs</h4>
-            <p>30 users timed out</p>
+            <p>{item.timeouts} users timed out</p>
           </div>
           <div className="bans-auditContainer">
             <h4>Bans</h4>
-            <p>20 users banned</p>
+            <p>{item.bans} users banned</p>
           </div>
           <div className="sentMsg-auditContainer">
             <h4>Total messages</h4>
-            <p>10 messages sent</p>
+            <p>{item.messages} messages sent</p>
           </div>
           <div className="kicks-auditContainer">
             <h4>Kicks</h4>
-            <p>40 users kicked</p>
+            <p>{item.kicks} users kicked</p>
           </div>
         </div>
         <div className="uptime-container">
