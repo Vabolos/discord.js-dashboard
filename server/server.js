@@ -1,61 +1,45 @@
 const fastify = require('fastify')({ logger: true })
-const dbConnection = require('../dbConnection.js');
+const dbConnection = require('./dbConnection.js');
 
-// get total sent messages
 fastify.get('/result', async (request, reply) => {
-  dbConnection.query('SELECT COUNT(message) FROM messageInfo', (error, results) => {
-    if (error) {
-      console.error('Error executing select query:', error);
-      reply.send({ error: 'Error executing select query' });
-      return;
-    }
-    const count = results[0]['COUNT(message)'];
-    const responseData = { count };
-    reply.send(responseData);
-  });
-})
+  try {
+    // Get total sent messages
+    const messagesCount = await queryDatabase('SELECT COUNT(messageId) FROM messageinfo');
 
-// get total bans
-fastify.get('/result', async (request, reply) => {
-  dbConnection.query('SELECT COUNT(userId) FROM bans', (error, results) => {
-    if (error) {
-      console.error('Error executing select query:', error);
-      reply.send({ error: 'Error executing select query' });
-      return;
-    }
-    const count = results[0]['COUNT(userId)'];
-    const responseData = { count };
-    reply.send(responseData);
-  });
-})
+    // Get total bans
+    const bansCount = await queryDatabase('SELECT COUNT(userId) FROM bans');
 
-// get total timeouts
-fastify.get('/result', async (request, reply) => {
-  dbConnection.query('SELECT COUNT(userId) FROM timeouts', (error, results) => {
-    if (error) {
-      console.error('Error executing select query:', error);
-      reply.send({ error: 'Error executing select query' });
-      return;
-    }
-    const count = results[0]['COUNT(userId)'];
-    const responseData = { count };
-    reply.send(responseData);
-  });
-})
+    // Get total kicks
+    const kicksCount = await queryDatabase('SELECT COUNT(userId) FROM kicks');
 
-// get total kicks
-fastify.get('/result', async (request, reply) => {
-  dbConnection.query('SELECT COUNT(userId) FROM kicks', (error, results) => {
-    if (error) {
-      console.error('Error executing select query:', error);
-      reply.send({ error: 'Error executing select query' });
-      return;
-    }
-    const count = results[0]['COUNT(userId)'];
-    const responseData = { count };
-    reply.send(responseData);
+    // Get total timeouts
+    const timeoutsCount = await queryDatabase('SELECT COUNT(userId) FROM timeouts');
+
+    // Send a single response with all the data
+    reply.send({
+      fullResult: messagesCount,
+      bans: bansCount,
+      kicks: kicksCount,
+      timeouts: timeoutsCount
+    });
+  } catch (error) {
+    reply.status(500).send({ error: 'Something went wrong' });
+  }
+});
+
+// Helper function to query the database with a promise
+function queryDatabase(query) {
+  return new Promise((resolve, reject) => {
+    dbConnection.query(query, function (error, results, fields) {
+      if (error) {
+        reject(error);
+      } else {
+        resolve(results[0]['COUNT(messageId)'] || results[0]['COUNT(userId)']);
+      }
+    });
   });
-})
+}
+
 
 const start = async () => {
   try {
