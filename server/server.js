@@ -1,4 +1,5 @@
 const fastify = require('fastify')({ logger: true })
+import cors from '@fastify/cors'
 const dbConnection = require('./dbConnection.js');
 
 fastify.get('/result', async (request, reply) => {
@@ -25,6 +26,13 @@ fastify.get('/result', async (request, reply) => {
   } catch (error) {
     reply.status(500).send({ error: 'Something went wrong' });
   }
+});
+
+fastify.register(cors, {
+  origin: '*',
+  methods: ['GET', 'PUT', 'POST', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true,
 });
 
 // Helper function to query the database with a promise
