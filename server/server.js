@@ -1,5 +1,5 @@
 const fastify = require('fastify')({ logger: true })
-import cors from '@fastify/cors'
+const cors = require('@fastify/cors')
 const dbConnection = require('./dbConnection.js');
 
 fastify.get('/result', async (request, reply) => {
