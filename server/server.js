@@ -1,4 +1,5 @@
 const fastify = require('fastify')({ logger: true })
+const dbConnection = require('../dbConnection.js');
 
 fastify.get('/', async (request, reply) => {
   return { hello: 'world' }
