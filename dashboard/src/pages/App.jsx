@@ -1,5 +1,6 @@
 import '../App.css';
 import React, { useState, useEffect } from 'react';
+import CountUp from 'react-countup';
 
 function DataFetch() {
   const [data, setData] = useState(null);
@@ -68,7 +69,7 @@ function DataFetch() {
           <h3>Audit information</h3>
           <div className="timeouts-auditContainer">
             <h4>Time-outs</h4>
-            <p>{item.timeouts} users timed out</p>
+            <p>{<CountUp start={0} end={item.timeouts} duration={3}>users timed out</CountUp>}</p>
           </div>
           <div className="bans-auditContainer">
             <h4>Bans</h4>
