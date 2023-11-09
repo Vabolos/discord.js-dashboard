@@ -1,8 +1,29 @@
 import '../App.css';
+import React, { useState, useEffect } from 'react';
 
-function App() {
+function DataFetch() {
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/result');
+        const result = await response.json();
+        setData(result);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    // refresh data every second
+    const interval = setInterval(() => {
+      fetchData();
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <div className="App">
+  <div className="App">
       <header className="App-header">
         <div className="topbar-status-container">
           <h2>Current status: offline/online</h2>
@@ -65,4 +86,4 @@ function App() {
   );
 }
 
-export default App;
+export default DataFetch;
