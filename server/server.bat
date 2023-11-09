@@ -5,7 +5,7 @@ title Fastify Server Starter
 cd D:\Github\Bots\Discord.js\discord.js-dashboard\server
 
 @REM Start your fastify server
-npm start
+nodemon server
 
 @REM Pause the script so you can see any errors
 pause
