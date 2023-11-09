@@ -17,7 +17,7 @@ fastify.get('/result', async (request, reply) => {
 
     // Send a single response with all the data
     reply.send({
-      fullResult: messagesCount,
+      messages: messagesCount,
       bans: bansCount,
       kicks: kicksCount,
       timeouts: timeoutsCount
