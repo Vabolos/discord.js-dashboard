@@ -16,18 +16,47 @@ fastify.get('/result', async (request, reply) => {
     // Get total timeouts
     const timeoutsCount = await queryDatabase('SELECT COUNT(userId) FROM timeouts');
 
+    // get most recent message sent
+    const recentMessageContent = await queryDatabase('SELECT messageContent FROM messageinfo ORDER BY id DESC LIMIT 1');
+    const recentMessageUser = await queryDatabase('SELECT userName FROM messageinfo ORDER BY id DESC LIMIT 1');
+
+    // most recently banned user
+    const recentBannedUser = await queryDatabase('SELECT userName FROM bans ORDER BY id DESC LIMIT 1');
+    const recentBannedReason = await queryDatabase('SELECT reason FROM bans ORDER BY id DESC LIMIT 1');
+
+    // most recently kicked user
+    const recentKickedUser = await queryDatabase('SELECT userName FROM kicks ORDER BY id DESC LIMIT 1');
+    const recentKickedReason = await queryDatabase('SELECT reason FROM kicks ORDER BY id DESC LIMIT 1');
+
+    // most recently timed out user
+    const recentTimedOutUser = await queryDatabase('SELECT userName FROM timeouts ORDER BY id DESC LIMIT 1');
+    const recentTimedOutReason = await queryDatabase('SELECT reason FROM timeouts ORDER BY id DESC LIMIT 1');
+
+    // most recently joined user
+    const recentJoinedUser = await queryDatabase('SELECT userName FROM joins ORDER BY id DESC LIMIT 1');
+
     // Send a single response with all the data
     reply.send({
       messages: messagesCount,
       bans: bansCount,
       kicks: kicksCount,
-      timeouts: timeoutsCount
+      timeouts: timeoutsCount,
+      recentMessage: recentMessageContent,
+      recentMessageUser: recentMessageUser,
+      recentBannedUser: recentBannedUser,
+      recentBannedReason: recentBannedReason,
+      recentKickedUser: recentKickedUser,
+      recentKickedReason: recentKickedReason,
+      recentTimedOutUser: recentTimedOutUser,
+      recentTimedOutReason: recentTimedOutReason,
+      recentJoinedUser: recentJoinedUser
     });
   } catch (error) {
     reply.status(500).send({ error: 'Something went wrong' });
   }
 });
 
+// Register cors
 fastify.register(cors, {
   origin: '*',
   methods: ['GET', 'PUT', 'POST', 'DELETE'],
@@ -35,18 +64,17 @@ fastify.register(cors, {
   credentials: true,
 });
 
-// Helper function to query the database with a promise
-function queryDatabase(query) {
+// Helper function to query the database with promise (keep data view the same)
+const queryDatabase = (query) => {
   return new Promise((resolve, reject) => {
-    dbConnection.query(query, function (error, results, fields) {
+    dbConnection.query(query, (error, results) => {
       if (error) {
         reject(error);
-      } else {
-        resolve(results[0]['COUNT(messageId)'] || results[0]['COUNT(userId)']);
       }
+      resolve(results[0][Object.keys(results[0])[0]]);
     });
   });
-}
+};
 
 
 const start = async () => {
