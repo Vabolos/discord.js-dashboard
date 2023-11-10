@@ -5,6 +5,7 @@ import CountUp from 'react-countup';
 function DataFetch() {
   const [data, setData] = useState(null);
 
+  // fetch db data
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -16,6 +17,23 @@ function DataFetch() {
       }
     };
 
+    // refresh data every second
+    const interval = setInterval(() => {
+      fetchData();
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('http://localhost:4000/bot-status');
+        const result = await response.json();
+        setData(result);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
     // refresh data every second
     const interval = setInterval(() => {
       fetchData();
@@ -39,7 +57,7 @@ function DataFetch() {
   <div className="App">
       <header className="App-header">
         <div className="topbar-status-container">
-          <h2>Current status: offline/online</h2>
+          {/* {botStatus} */}
         </div>
         <div className="sidebar-container">
           <div className="sidebar-title">
