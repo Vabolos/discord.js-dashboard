@@ -331,6 +331,32 @@
   justify-content: center;
   font-size: 37px;
 }
+.recentActivity-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+  color: #ffffff;
+  font-size: 22px;
+  margin-left: 18px;
+  margin-top: -80px;
+}
+.recentActivity-content p {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  transition: .2s ease-in-out;
+}
+.recentActivity-content p:hover {
+  transform: scale(1.05);
+}
+.truncate {
+  max-width: 90%; /* Adjust the maximum width as needed */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow:ellipsis;
+}
 
 .upcoming-container {
   width: 954px;

@@ -41,16 +41,41 @@ function DataFetch() {
     return () => clearInterval(interval);
   }, []);
 
+  // audit data
   const messages = data?.messages;
   const bans = data?.bans;
   const timeouts = data?.timeouts;
   const kicks = data?.kicks;
+  // recent activity data
+  // recent message
+  const recentMessageContent = data?.recentMessage;
+  const recentMessageUser = data?.recentMessageUser;
+  // recent ban
+  const recentBanUser = data?.recentBannedUser;
+  const recentBanReason = data?.recentBannedReason;
+  // recent kick
+  const recentKickUser = data?.recentKickedUser;
+  const recentKickReason = data?.recentKickedReason;
+  // recent timeout
+  const recentTimeoutUser = data?.recentTimedOutUser;
+  const recentTimeoutReason = data?.recentTimedOutReason;
+  // recent join
+  const recentJoinUser = data?.recentJoinedUser;
 
   const item = {
     messages,
     bans,
     timeouts,
-    kicks
+    kicks,
+    recentMessageContent,
+    recentMessageUser,
+    recentBanUser,
+    recentBanReason,
+    recentKickUser,
+    recentKickReason,
+    recentTimeoutUser,
+    recentTimeoutReason,
+    recentJoinUser
   };
 
   return (
@@ -107,7 +132,18 @@ function DataFetch() {
         </div>
         <div className="recentActivity-container">
           <h3>Recent activity</h3>
-        </div>
+            <div className="recentActivity-content">
+              <div className="recentFun">
+                <p className="truncate"> {item.recentMessageUser} - {item.recentMessageContent}</p>
+                <p className="truncate"> {item.recentJoinUser}</p>
+              </div>
+              <div className="recentAudit">
+                <p className="truncate"> {item.recentBanUser} - {item.recentBanReason}</p>
+                <p className="truncate"> {item.recentKickUser} - {item.recentKickReason}</p>
+                <p className="truncate"> {item.recentTimeoutUser} - {item.recentTimeoutReason}</p>
+              </div>
+            </div>
+          </div>
         <div className="upcoming-container">
           <h3>Upcoming</h3>
         </div>
