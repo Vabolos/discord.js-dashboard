@@ -2,11 +2,11 @@ const fs = require('fs');
 const path = require('node:path');
 const { Client, Partials, Collection, Events, IntentsBitField } = require('discord.js');
 const { token } = require('./config.json');
-// const fastify = require('fastify')({ logger: false });
+const fastify = require('fastify')({ logger: false });
 
-// fastify.get('/bot-status', async (request, reply) => {
-// 	reply.send({ status: 'I am online!' });
-// });
+fastify.get('/bot-status', async (request, reply) => {
+	reply.send({ status: 'I am online!' });
+});
 
 // Create intents
 const intents = new IntentsBitField([
@@ -88,3 +88,15 @@ for (const file of eventFiles) {
 
 // Log in to Discord with your client's token
 client.login(token);
+// start fastify
+const start = async () => {
+	try {
+		await fastify.listen({ port: 4000 });
+		console.log(`\x1b[36mserver listening on ${fastify.server.address().port}`);
+	}
+	catch (err) {
+		fastify.log.error(err);
+		process.exit(1);
+	}
+};
+start();
