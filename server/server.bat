@@ -5,10 +5,10 @@ title Fastify Server Starter
 cd D:\Github\Bots\Discord.js\discord.js-dashboard\server
 
 @REM wait a few seconds for the server to start
-timeout /t 3 /nobreak
+timeout /t 10
 
 @REM Start your fastify server
-nodemon server
+nodemon server.js
 
 @REM Pause the script so you can see any errors
 pause
