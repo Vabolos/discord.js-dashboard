@@ -69,19 +69,19 @@ function DataFetch() {
           <h3>Audit information</h3>
           <div className="timeouts-auditContainer">
             <h4>Time-outs</h4>
-            <p>{<CountUp start={0} end={item.timeouts} duration={3}>users timed out</CountUp>}</p>
+            <p>{<CountUp start={0} end={item.timeouts} duration={3}></CountUp>} users timed out</p>
           </div>
           <div className="bans-auditContainer">
             <h4>Bans</h4>
-            <p>{item.bans} users banned</p>
+            <p>{<CountUp start={0} end={item.bans} duration={3}></CountUp>} users banned</p>
           </div>
           <div className="sentMsg-auditContainer">
             <h4>Total messages</h4>
-            <p>{item.messages} messages sent</p>
+            <p>{<CountUp start={0} end={item.messages} duration={3}></CountUp>} messages sent</p>
           </div>
           <div className="kicks-auditContainer">
             <h4>Kicks</h4>
-            <p>{item.kicks} users kicked</p>
+            <p>{<CountUp start={0} end={item.kicks} duration={3}></CountUp>} users kicked</p>
           </div>
         </div>
         <div className="uptime-container">
