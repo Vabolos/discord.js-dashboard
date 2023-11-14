@@ -21,6 +21,10 @@ Nodemon is not installed by default and can be installed by running the followin
 The bot will automatically restart when you make changes to the code and hit save (CTRL + S).
 This project can also be started using the .bat files that it comes with. All you have to do is go to these .bat files and change paths where needed. After that, double click the Startup.bat file to start the bot, database and react Server. This will then open 1 cmd window containing different tabs for each process. **Closing this window will close all processes!**
 
+Keep in mind that you do NOT need the .bat files to start the bot, this is just a way to make it easier to start the bot, database and react server.
+
+Alternatively, you can open multiple terminals in visual studio code and running the start commands in each one. This will also allow you to see the output of each process. (the cmd does this too, just in an external window)
+
 ### Start the dashboard:
 
 `npm start`
