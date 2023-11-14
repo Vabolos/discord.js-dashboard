@@ -32,3 +32,8 @@ node .
 ```bash
 nodemon
 ```
+
+5. Express server
+This bot has a built-in fastify server which listens for the port: 4000. You can change this in the index.js file.
+The server sends the bot status to the dashboard website.
+
