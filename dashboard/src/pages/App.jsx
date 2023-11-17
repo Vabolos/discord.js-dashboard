@@ -95,7 +95,7 @@ function DataFetch() {
             </li>
             <li>
               <a href>
-                <i className="fa fa-tachometer" aria-hidden="true"></i> Leveling
+              <i class="fa fa-trophy" aria-hidden="true"></i> Leveling
               </a>
             </li>
             <li>
@@ -116,7 +116,7 @@ function DataFetch() {
           </div>
           <div className="bans-auditContainer">
             <h4>Bans</h4>
-            <p>{<CountUp start={0} end={item.bans} duration={3}></CountUp>} users banned</p>
+            <p>{<CountUp start={0} end={item.bans} duration={3}></CountUp>} users banned</p>         
           </div>
           <div className="sentMsg-auditContainer">
             <h4>Total messages</h4>
@@ -134,13 +134,17 @@ function DataFetch() {
           <h3>Recent activity</h3>
             <div className="recentActivity-content">
               <div className="recentFun">
-                <p className="truncate"> {item.recentMessageUser} - {item.recentMessageContent}</p>
-                <p className="truncate"> {item.recentJoinUser}</p>
+                <div className="truncate">
+                  <i class="fa fa-comment"></i> {item.recentMessageUser} sent: {item.recentMessageContent} <br />
+                  <i class="fa fa-door-open"></i> {item.recentJoinUser} joined the server <br /><br />
+                </div>
               </div>
               <div className="recentAudit">
-                <p className="truncate"> {item.recentBanUser} - {item.recentBanReason}</p>
-                <p className="truncate"> {item.recentKickUser} - {item.recentKickReason}</p>
-                <p className="truncate"> {item.recentTimeoutUser} - {item.recentTimeoutReason}</p>
+                <div className="truncate">
+                  <i class="fa fa-ban"></i> {item.recentBanUser} was banned for: {item.recentBanReason} <br />
+                  <i class="fa fa-hammer"></i> {item.recentKickUser} was kicked for: {item.recentKickReason} <br />
+                  <i class="fa fa-clock"></i> {item.recentTimeoutUser} was timed out for: {item.recentTimeoutReason} 
+                </div>
               </div>
             </div>
           </div>

@@ -412,3 +412,24 @@ li a:hover::after {
   width: 100%;
   transition: width .3s;
 }
+
+.recentFun,
+.recentAudit {
+  font-size: 26px;
+  position: relative;
+  padding-left: 30px;
+}
+.recentFun::before,
+.recentAudit::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 10px;
+  height: 100%;
+  background-color: rgb(255, 255, 255);
+}
+.recentFun .fa,
+.recentAudit .fa {
+  margin-right: 10px; /* Add spacing between icon and text */
+}
