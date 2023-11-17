@@ -135,15 +135,15 @@ function DataFetch() {
             <div className="recentActivity-content">
               <div className="recentFun">
                 <div className="truncate">
-                  <i class="fa fa-comment"></i> {item.recentMessageUser} sent: {item.recentMessageContent} <br />
-                  <i class="fa fa-door-open"></i> {item.recentJoinUser} joined the server <br /><br />
+                  <i class="fa fa-comment"></i> <strong>{item.recentMessageUser}</strong> sent: {item.recentMessageContent} <br />
+                  <i class="fa fa-door-open"></i> <strong>{item.recentJoinUser}</strong> joined the server <br /><br />
                 </div>
               </div>
               <div className="recentAudit">
                 <div className="truncate">
-                  <i class="fa fa-ban"></i> {item.recentBanUser} was banned for: {item.recentBanReason} <br />
-                  <i class="fa fa-hammer"></i> {item.recentKickUser} was kicked for: {item.recentKickReason} <br />
-                  <i class="fa fa-clock"></i> {item.recentTimeoutUser} was timed out for: {item.recentTimeoutReason} 
+                  <i class="fa fa-ban"></i> <strong>{item.recentBanUser}</strong> was banned for: {item.recentBanReason} <br />
+                  <i class="fa fa-hammer"></i> <strong>{item.recentKickUser}</strong> was kicked for: {item.recentKickReason} <br />
+                  <i class="fa fa-clock"></i> <strong>{item.recentTimeoutUser}</strong> was timed out for: {item.recentTimeoutReason} 
                 </div>
               </div>
             </div>
