@@ -5,7 +5,7 @@ import CountUp from 'react-countup';
 function DataFetch() {
   const [data, setData] = useState(null);
 
-  // fetch db data
+  // fetch db data on port 5000
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -24,6 +24,7 @@ function DataFetch() {
     return () => clearInterval(interval);
   }, []);
 
+  // fetch status of bot on port 4000
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -41,6 +42,7 @@ function DataFetch() {
     return () => clearInterval(interval);
   }, []);
 
+  // linking data to variables
   // audit data
   const messages = data?.messages;
   const bans = data?.bans;
