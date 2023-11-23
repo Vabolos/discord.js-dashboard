@@ -76,7 +76,7 @@ const queryDatabase = (query) => {
   });
 };
 
-
+// start server
 const start = async () => {
   try {
     await fastify.listen({ port: 5000 })

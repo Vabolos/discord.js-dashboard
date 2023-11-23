@@ -2,6 +2,7 @@ import '../App.css';
 import React, { useState, useEffect } from 'react';
 import CountUp from 'react-countup';
 
+// main data fetch function
 function DataFetch() {
   const [data, setData] = useState(null);
 
