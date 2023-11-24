@@ -25,23 +25,34 @@ function DataFetch() {
     return () => clearInterval(interval);
   }, []);
 
-  // fetch status of bot on port 4000
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('http://localhost:4000/bot-status');
-        const result = await response.json();
-        setData(result);
-      } catch (error) {
-        console.error('Error fetching data:', error);
+  // fetch status of bot on port 4000 (and display it)
+  const [online, setOnline] = useState(true); // Initialize data as false
+
+  const checkDiscordBotStatus = async () => {
+    try {
+      const response = await fetch('http://localhost:4000/bot-status');
+      if (response.ok) {
+        console.log('Bot is online!');
+        setOnline(true);
+      } else {
+        console.log('Bot is offline!');
+        setOnline(false);
       }
-    };
+    } catch (error) {
+      console.error('Error while fetching data', error);
+      setOnline(false);
+    }
+  };
+
     // refresh data every second
-    const interval = setInterval(() => {
-      fetchData();
-    }, 1000);
-    return () => clearInterval(interval);
-  }, []);
+    useEffect(() => {
+      const checkBotStatusInterval = setInterval(() => {
+        checkDiscordBotStatus();
+      }, 1000);
+  
+      // Clean up the interval when the component unmounts
+      return () => clearInterval(checkBotStatusInterval);
+    }, []);
 
   // linking data to variables
   // audit data
@@ -85,7 +96,12 @@ function DataFetch() {
   <div className="App">
       <header className="App-header">
         <div className="topbar-status-container">
-          {/* {botStatus} */}
+          {online ? (
+                <h2>The bot is currently online!</h2>
+              ) : (
+                <h2>The bot is currently offline!</h2>
+                
+              )}
         </div>
         <div className="sidebar-container">
           <div className="sidebar-title">
