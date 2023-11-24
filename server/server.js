@@ -58,10 +58,7 @@ fastify.get('/result', async (request, reply) => {
 
 // Register cors
 fastify.register(cors, {
-  origin: '*',
-  methods: ['GET', 'PUT', 'POST', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true,
+  falseOrigin: true,
 });
 
 // Helper function to query the database with promise (keep data view the same)
