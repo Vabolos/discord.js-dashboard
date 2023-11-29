@@ -36,7 +36,7 @@ fastify.get('/result', async (request, reply) => {
     const recentJoinedUser = await queryDatabase('SELECT userName FROM joins ORDER BY id DESC LIMIT 1');
 
     // get all upcomming items
-    const upcommingItems = await queryDatabase('SELECT info FROM upcoming');
+    const upcomingItems = await queryDatabase('SELECT info FROM upcoming');
     const upcomingCount = await queryDatabase('SELECT COUNT(info) FROM upcoming');
 
     // Send a single response with all the data
@@ -54,7 +54,7 @@ fastify.get('/result', async (request, reply) => {
       recentTimedOutUser: recentTimedOutUser,
       recentTimedOutReason: recentTimedOutReason,
       recentJoinedUser: recentJoinedUser,
-      upcomingItems: upcommingItems,
+      upcomingItems: upcomingItems,
       upcomingCount: upcomingCount
     });
   } catch (error) {
