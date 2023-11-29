@@ -173,7 +173,7 @@ function DataFetch() {
             </div>
           </div>
         <div className="upcoming-container">
-          <h3>Upcoming ({item.upcomingCount})</h3>
+          <h3>Upcoming </h3><h6>({item.upcomingCount})</h6>
         </div>
       </header>
       <script src="script.js"></script>
