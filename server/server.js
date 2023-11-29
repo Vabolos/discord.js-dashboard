@@ -36,7 +36,7 @@ fastify.get('/result', async (request, reply) => {
     const recentJoinedUser = await queryDatabase('SELECT userName FROM joins ORDER BY id DESC LIMIT 1');
 
     // get all upcomming items
-    const upcomingItems = await queryDatabase('SELECT info FROM upcoming');
+    const upcomingItems = await queryDatabase('SELECT info FROM upcoming ORDER BY id DESC');
     const upcomingCount = await queryDatabase('SELECT COUNT(info) FROM upcoming');
 
     // Send a single response with all the data
