@@ -75,6 +75,9 @@ function DataFetch() {
   const recentTimeoutReason = data?.recentTimedOutReason;
   // recent join
   const recentJoinUser = data?.recentJoinedUser;
+  // new upcoming item
+  const upcomingItem = data?.upcomingItems;
+  const upcomingCount = data?.upcomingCount;
 
   const item = {
     messages,
@@ -89,7 +92,9 @@ function DataFetch() {
     recentKickReason,
     recentTimeoutUser,
     recentTimeoutReason,
-    recentJoinUser
+    recentJoinUser,
+    upcomingItem,
+    upcomingCount
   };
 
   return (
@@ -168,7 +173,7 @@ function DataFetch() {
             </div>
           </div>
         <div className="upcoming-container">
-          <h3>Upcoming</h3>
+          <h3>Upcoming ({item.upcomingCount})</h3>
         </div>
       </header>
       <script src="script.js"></script>

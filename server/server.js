@@ -35,6 +35,10 @@ fastify.get('/result', async (request, reply) => {
     // most recently joined user
     const recentJoinedUser = await queryDatabase('SELECT userName FROM joins ORDER BY id DESC LIMIT 1');
 
+    // get all upcomming items
+    const upcommingItems = await queryDatabase('SELECT info FROM upcoming');
+    const upcomingCount = await queryDatabase('SELECT COUNT(info) FROM upcoming');
+
     // Send a single response with all the data
     reply.send({
       messages: messagesCount,
@@ -49,7 +53,9 @@ fastify.get('/result', async (request, reply) => {
       recentKickedReason: recentKickedReason,
       recentTimedOutUser: recentTimedOutUser,
       recentTimedOutReason: recentTimedOutReason,
-      recentJoinedUser: recentJoinedUser
+      recentJoinedUser: recentJoinedUser,
+      upcomingItems: upcommingItems,
+      upcomingCount: upcomingCount
     });
   } catch (error) {
     reply.status(500).send({ error: 'Something went wrong' });
