@@ -174,6 +174,11 @@ function DataFetch() {
           </div>
         <div className="upcoming-container">
           <h3>Upcoming </h3><h6>({item.upcomingCount})</h6>
+          <div className="upcoming-content">
+            <div className="truncate">
+              {item.upcomingItem}
+            </div>
+          </div>
         </div>
       </header>
       <script src="script.js"></script>
