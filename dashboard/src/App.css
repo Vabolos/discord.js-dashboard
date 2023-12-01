@@ -1,7 +1,7 @@
+/* general style settings */
 .App {
   text-align: center;
 }
-
 .App-header {
   background: #342B7E;
   min-height: 100vh;
@@ -12,6 +12,7 @@
   font-size: calc(10px + 2vmin);
 }
 
+/* dashboard text styling (welcome title) */
 .dashboard-welcome {
   display: flex;
   width: 915px;
@@ -28,6 +29,7 @@
   left: 12rem;
 }
 
+/* all toolbar styling */
 .topbar-status-container {
   width: 88.3%;
   height: 45px;
@@ -56,6 +58,7 @@
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
+/* all styling for the sidebar (bg + text) */
 .sidebar-container {
   width: 300px;
   height: 100vh;
@@ -66,7 +69,6 @@
   background-color: #2c256b;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
 }
-
 .sidebar-navigation {
   font-size: 35px;
   font-weight: 600;
@@ -85,8 +87,6 @@
   margin-bottom: 20px;
   cursor: pointer;
 }
-
-
 .sidebar-spacer-top {
   margin-top: 10px;
   display: flex;
@@ -95,7 +95,6 @@
   background: #ffffff;
   margin-left: 12%;
 }
-
 .sidebar-title {
   display: flex;
   width: 232px;
@@ -111,6 +110,7 @@
   padding-top: 10px;
 }
 
+/* all audit container styling */
 .audit-container {
   width: 954px;
   height: 482px;
@@ -135,6 +135,7 @@
   font-size: 37px;
 }
 
+/* all styling for timeout box + effects */
 .timeouts-auditContainer {
   width: 325px;
   height: 175px;
@@ -173,6 +174,7 @@
   transform: scale(1.1);
 }
 
+/* styling for the bans box + effects */
 .bans-auditContainer {
   width: 325px;
   height: 175px;
@@ -211,6 +213,7 @@
   transform: scale(1.1);
 }
 
+/* styling for the messages box + effetcs */
 .sentMsg-auditContainer {
   width: 325px;
   height: 175px;
@@ -249,6 +252,7 @@
   transform: scale(1.1);
 }
 
+/* styling for the kick box + effects */
 .kicks-auditContainer {
   width: 325px;
   height: 175px;
@@ -287,6 +291,7 @@
   transform: scale(1.1);
 }
 
+/* uptime container styling */
 .uptime-container {
   width: 954px;
   height: 300px;
@@ -310,6 +315,7 @@
   font-size: 37px;
 }
 
+/* all recent activity-container styling */
 .recentActivity-container {
   width: 954px;
   height: 375px;
@@ -352,6 +358,7 @@
 .recentActivity-content p:hover {
   transform: scale(1.05);
 }
+/* added truncate to the recent activity container to cut off text */
 .truncate {
   max-width: 90%; /* Adjust the maximum width as needed */
   white-space: nowrap;
@@ -359,6 +366,7 @@
   text-overflow:ellipsis;
 }
 
+/* styling for the upcoming container */
 .upcoming-container {
   width: 954px;
   height: 550px;
@@ -395,6 +403,7 @@
   margin-top: -66px;
 }
 
+/* hover effect for the sidebar divs/text */
 li a {
   color: #ffffff;
   text-decoration: none;
@@ -427,6 +436,7 @@ li a:hover::after {
   transition: width .3s;
 }
 
+/* styling for the recent activity divs (fun and audit) */
 .recentFun,
 .recentAudit {
   font-size: 26px;

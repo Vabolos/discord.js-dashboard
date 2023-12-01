@@ -97,6 +97,7 @@ function DataFetch() {
     upcomingCount
   };
 
+  // return data (rendering)
   return (
   <div className="App">
       <header className="App-header">
