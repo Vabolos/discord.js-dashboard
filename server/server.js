@@ -67,14 +67,19 @@ fastify.register(cors, {
   falseOrigin: true,
 });
 
-// Helper function to query the database with promise (send all upcoming items as an array)
+// Helper function to query the database with promise (keep data view the same and send upcomming items as array)
 const queryDatabase = (query) => {
   return new Promise((resolve, reject) => {
-    dbConnection.query(query, (error, results) => {
+    dbConnection.query(query, (error, result) => {
       if (error) {
         reject(error);
       }
-      resolve(results);
+
+      if (result.length > 1) {
+        resolve(result);
+      } else {
+        resolve(result[0]);
+      }
     });
   });
 };
