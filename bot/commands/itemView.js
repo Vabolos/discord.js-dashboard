@@ -10,7 +10,8 @@ module.exports = {
         const embed = new EmbedBuilder()
             .setTitle('Upcoming items')
             .setDescription('List of all upcoming items')
-            .setColor('#342B7E');
+            .setColor('#342B7E')
+            .setTimestamp();
 
         const sql = 'SELECT `id`, `info` FROM `upcoming`';
         const values = [];

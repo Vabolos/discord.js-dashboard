@@ -12,7 +12,8 @@ module.exports = {
         const embed = new EmbedBuilder()
             .setTitle('New item!')
             .setDescription(`**Added item with info:** ${interaction.options.getString('info')}`)
-            .setColor('#342B7E');
+            .setColor('#342B7E')
+            .setTimestamp();
         // vars for db info
         const info = interaction.options.getString('info');
         const userId = interaction.user.id;
