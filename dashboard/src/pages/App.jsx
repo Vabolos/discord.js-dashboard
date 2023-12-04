@@ -76,7 +76,7 @@ function DataFetch() {
       upcomingItems: fetchedItems = [],
     } = data || {};
     
-    const upcomingItems = Array.isArray(fetchedItems) ? fetchedItems : [];
+    const upcomingItem = Array.isArray(fetchedItems) ? fetchedItems : [];
     
     const item = {
       messages,
@@ -95,6 +95,11 @@ function DataFetch() {
       recentTimeoutReason,
       recentJoinUser,
       upcomingCount,
+      upcomingItems: upcomingItem.map((item) => (
+        <div className="truncate">
+          <i class="fa fa-bullhorn"></i> {item}
+        </div>
+      )),
     };
     
 
@@ -161,7 +166,7 @@ function DataFetch() {
             <div className="recentActivity-content">
               <div className="recentFun">
                 <div className="truncate">
-                  <i class="fa fa-comment"></i> <strong>{item.recentMessageUser}</strong> sent: {item.recentMessageContent} <br />
+                  <i class="fa fa-comment"></i> <strong>{item.recentMessage.user}</strong> sent: {item.recentMessage.content} <br />
                   <i class="fa fa-door-open"></i> <strong>{item.recentJoinUser}</strong> joined the server <br /><br />
                 </div>
               </div>
@@ -176,13 +181,11 @@ function DataFetch() {
           </div>
         <div className="upcoming-container">
           <h3>Upcoming </h3><h6>({item.upcomingCount})</h6>
-            {upcomingItems.map((item, index) => (
-              <div key={index} className="upcoming-content">
-                <div className="truncate">
-                  {item.upcomingItem}
-                </div>
+            <div className="upcoming-content">
+              <div className="truncate">
+                {item.upcomingItems}
               </div>
-            ))}
+            </div>
         </div>
       </header>
       <script src="script.js"></script>
