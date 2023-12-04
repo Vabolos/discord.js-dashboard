@@ -54,48 +54,49 @@ function DataFetch() {
       return () => clearInterval(checkBotStatusInterval);
     }, []);
 
-  // linking data to variables
-  // audit data
-  const messages = data?.messages;
-  const bans = data?.bans;
-  const timeouts = data?.timeouts;
-  const kicks = data?.kicks;
-  // recent activity data
-  // recent message
-  const recentMessageContent = data?.recentMessage;
-  const recentMessageUser = data?.recentMessageUser;
-  // recent ban
-  const recentBanUser = data?.recentBannedUser;
-  const recentBanReason = data?.recentBannedReason;
-  // recent kick
-  const recentKickUser = data?.recentKickedUser;
-  const recentKickReason = data?.recentKickedReason;
-  // recent timeout
-  const recentTimeoutUser = data?.recentTimedOutUser;
-  const recentTimeoutReason = data?.recentTimedOutReason;
-  // recent join
-  const recentJoinUser = data?.recentJoinedUser;
-  // new upcoming item
-  const upcomingItem = data?.upcomingItems;
-  const upcomingCount = data?.upcomingCount;
+    // useEffect to log upcoming items (result from db)
+    useEffect(() => {
+      console.log(data?.upcomingItems);
+    }, [data]);
 
-  const item = {
-    messages,
-    bans,
-    timeouts,
-    kicks,
-    recentMessageContent,
-    recentMessageUser,
-    recentBanUser,
-    recentBanReason,
-    recentKickUser,
-    recentKickReason,
-    recentTimeoutUser,
-    recentTimeoutReason,
-    recentJoinUser,
-    upcomingItem,
-    upcomingCount
-  };
+    const {
+      messages,
+      bans,
+      timeouts,
+      kicks,
+      recentMessage: { content: recentMessageContent, user: recentMessageUser } = {},
+      recentBannedUser: recentBanUser,
+      recentBannedReason: recentBanReason,
+      recentKickedUser: recentKickUser,
+      recentKickedReason: recentKickReason,
+      recentTimedOutUser: recentTimeoutUser,
+      recentTimedOutReason: recentTimeoutReason,
+      recentJoinedUser: recentJoinUser,
+      upcomingCount,
+      upcomingItems: fetchedItems = [],
+    } = data || {};
+    
+    const upcomingItems = Array.isArray(fetchedItems) ? fetchedItems : [];
+    
+    const item = {
+      messages,
+      bans,
+      timeouts,
+      kicks,
+      recentMessage: {
+        content: recentMessageContent,
+        user: recentMessageUser,
+      },
+      recentBanUser,
+      recentBanReason,
+      recentKickUser,
+      recentKickReason,
+      recentTimeoutUser,
+      recentTimeoutReason,
+      recentJoinUser,
+      upcomingCount,
+    };
+    
 
   // return data (rendering)
   return (
@@ -175,11 +176,13 @@ function DataFetch() {
           </div>
         <div className="upcoming-container">
           <h3>Upcoming </h3><h6>({item.upcomingCount})</h6>
-          <div className="upcoming-content">
-            <div className="truncate">
-              {item.upcomingItem}
-            </div>
-          </div>
+            {upcomingItems.map((item, index) => (
+              <div key={index} className="upcoming-content">
+                <div className="truncate">
+                  {item.upcomingItem}
+                </div>
+              </div>
+            ))}
         </div>
       </header>
       <script src="script.js"></script>
