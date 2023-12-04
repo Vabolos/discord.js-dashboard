@@ -54,49 +54,48 @@ function DataFetch() {
       return () => clearInterval(checkBotStatusInterval);
     }, []);
 
-    const {
-      messages,
-      bans,
-      timeouts,
-      kicks,
-      recentMessage: { content: recentMessageContent, user: recentMessageUser } = {},
-      recentBannedUser: recentBanUser,
-      recentBannedReason: recentBanReason,
-      recentKickedUser: recentKickUser,
-      recentKickedReason: recentKickReason,
-      recentTimedOutUser: recentTimeoutUser,
-      recentTimedOutReason: recentTimeoutReason,
-      recentJoinedUser: recentJoinUser,
-      upcomingCount,
-      upcomingItems: fetchedItems = [],
-    } = data || {};
-    
-    const upcomingItem = Array.isArray(fetchedItems) ? fetchedItems : [];
-    
-    const item = {
-      messages,
-      bans,
-      timeouts,
-      kicks,
-      recentMessage: {
-        content: recentMessageContent,
-        user: recentMessageUser,
-      },
-      recentBanUser,
-      recentBanReason,
-      recentKickUser,
-      recentKickReason,
-      recentTimeoutUser,
-      recentTimeoutReason,
-      recentJoinUser,
-      upcomingCount,
-      upcomingItems: upcomingItem.map((item) => (
-        <div className="truncate">
-          <i class="fa fa-bullhorn"></i> {item}
-        </div>
-      )),
-    };
-    
+  // linking data to variables
+  // audit data
+  const messages = data?.messages;
+  const bans = data?.bans;
+  const timeouts = data?.timeouts;
+  const kicks = data?.kicks;
+  // recent activity data
+  // recent message
+  const recentMessageContent = data?.recentMessage;
+  const recentMessageUser = data?.recentMessageUser;
+  // recent ban
+  const recentBanUser = data?.recentBannedUser;
+  const recentBanReason = data?.recentBannedReason;
+  // recent kick
+  const recentKickUser = data?.recentKickedUser;
+  const recentKickReason = data?.recentKickedReason;
+  // recent timeout
+  const recentTimeoutUser = data?.recentTimedOutUser;
+  const recentTimeoutReason = data?.recentTimedOutReason;
+  // recent join
+  const recentJoinUser = data?.recentJoinedUser;
+  // new upcoming item
+  const upcomingItem = data?.upcomingItems;
+  const upcomingCount = data?.upcomingCount;
+
+  const item = {
+    messages,
+    bans,
+    timeouts,
+    kicks,
+    recentMessageContent,
+    recentMessageUser,
+    recentBanUser,
+    recentBanReason,
+    recentKickUser,
+    recentKickReason,
+    recentTimeoutUser,
+    recentTimeoutReason,
+    recentJoinUser,
+    upcomingItem,
+    upcomingCount
+  };
 
   // return data (rendering)
   return (
@@ -161,7 +160,7 @@ function DataFetch() {
             <div className="recentActivity-content">
               <div className="recentFun">
                 <div className="truncate">
-                  <i class="fa fa-comment"></i> <strong>{item.recentMessage.user}</strong> sent: {item.recentMessage.content} <br />
+                  <i class="fa fa-comment"></i> <strong>{item.recentMessageUser}</strong> sent: {item.recentMessageContent} <br />
                   <i class="fa fa-door-open"></i> <strong>{item.recentJoinUser}</strong> joined the server <br /><br />
                 </div>
               </div>
@@ -176,11 +175,11 @@ function DataFetch() {
           </div>
         <div className="upcoming-container">
           <h3>Upcoming </h3><h6>({item.upcomingCount})</h6>
-            <div className="upcoming-content">
-              <div className="truncate">
-                {item.upcomingItems}
-              </div>
+          <div className="upcoming-content">
+            <div className="truncate">
+              {item.upcomingItem}
             </div>
+          </div>
         </div>
       </header>
       <script src="script.js"></script>
