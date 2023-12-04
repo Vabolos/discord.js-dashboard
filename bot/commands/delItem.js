@@ -39,7 +39,8 @@ module.exports = {
             }
             else if (result && result.affectedRows > 0) {
                     embed.setTitle('Deleted item!');
-                    embed.setDescription(`**Deleted item with ID:** ${id}`);
+                    embed.setDescription(`**Deleted item with ID:** ${id}`)
+                    .setTimestamp();
                     interaction.reply({ embeds: [embed] });
                 }
                 else {
