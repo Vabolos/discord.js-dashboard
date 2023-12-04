@@ -54,11 +54,6 @@ function DataFetch() {
       return () => clearInterval(checkBotStatusInterval);
     }, []);
 
-    // useEffect to log upcoming items (result from db)
-    useEffect(() => {
-      console.log(data?.upcomingItems);
-    }, [data]);
-
     const {
       messages,
       bans,
