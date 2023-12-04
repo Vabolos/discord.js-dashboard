@@ -402,6 +402,19 @@
   margin-left: 100px;
   margin-top: -66px;
 }
+.upcoming-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+  color: #ffffff;
+  font-size: 28px;
+  margin-left: 18px;
+  margin-top: -80px;
+
+}
 
 /* hover effect for the sidebar divs/text */
 li a {
