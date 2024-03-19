@@ -2,7 +2,7 @@ const fastify = require('fastify')({ logger: true })
 const cors = require('@fastify/cors')
 const dbConnection = require('./dbConnection.js');
 
-fastify.get('/result', async (request, reply) => {
+fastify.get('/result', async (reply) => {
   try {
     // Get total sent messages
     const messagesCount = await queryDatabase('SELECT COUNT(messageId) FROM messageinfo');
