@@ -39,5 +39,10 @@ To access the dashboard, go to the following URL in your web browser:
 
 `http://localhost:3000 `
 
+### Misc URLs
+There are 2 more URLs used in this project to track both the online status of the bot and the items being sent from the database to the website. These URLs are:
+- `http://localhost:4000/bot-status`
+- `http://localhost:5000/result`
+
 ## Contributing
 If you would like to contribute to this project, please feel free to submit a pull request.
